@@ -1,12 +1,21 @@
 export interface PopularArtists {
   id: string;
-  name: string;
+  artistName: string;
   photo: string;
 }
 
-export interface PopularAlbums {
-  id: string;
+export interface PopularAlbums extends PopularArtists {
   albumName: string;
-  artistName: string;
-  albumPhoto: string;
+}
+
+export interface CoverListProps {
+  title: string;
+  list: PopularArtists[] | PopularAlbums[];
+  type: "artist" | "album";
+}
+
+export interface CoverCardProps extends PopularArtists, PopularAlbums {
+  id?: string;
+  albumName?: string;
+  artistName?: string;
 }
