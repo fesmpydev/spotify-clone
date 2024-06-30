@@ -1,6 +1,6 @@
+import { Fragment } from "react/jsx-runtime";
 import CoverCard from "./CoverCard";
 import { CoverListProps } from "../../types";
-import { Fragment } from "react/jsx-runtime";
 
 export default function CoverList({ title, list, type }: CoverListProps) {
   return (
@@ -13,11 +13,19 @@ export default function CoverList({ title, list, type }: CoverListProps) {
         {list.map((item) => (
           <Fragment key={item.id}>
             {type === "artist" && "artistName" in item && (
-              <CoverCard artistName={item.artistName} photo={item.photo} />
+              <CoverCard
+                artistName={item.artistName}
+                photo={item.photo}
+                id={item.id}
+              />
             )}
 
             {type === "album" && "albumName" in item && (
-              <CoverCard albumName={item.albumName} photo={item.photo} />
+              <CoverCard
+                albumName={item.albumName}
+                photo={item.photo}
+                id={item.id}
+              />
             )}
           </Fragment>
         ))}
