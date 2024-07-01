@@ -4,7 +4,8 @@ import { popularArtist } from "../constants/popularArtists";
 import { PopularAlbums, PopularArtists, UseCoverCardDetails } from "../types";
 
 export default function useCoverCardDetails({ type, id }: UseCoverCardDetails) {
-  const [data, setData] = useState<PopularAlbums | PopularArtists>();
+  const [artistData, setArtistData] = useState<PopularArtists>();
+  const [albumData, setAlbumData] = useState<PopularAlbums>();
 
   useEffect(() => {
     if (type && id) {
@@ -13,18 +14,18 @@ export default function useCoverCardDetails({ type, id }: UseCoverCardDetails) {
 
         if (artist === undefined) return;
 
-        setData(artist);
+        setArtistData(artist);
       } else if (type === "album") {
         const album = popularAlbums.find((album) => album.id === id);
 
         if (album === undefined) return;
 
-        setData(album);
+        setAlbumData(album);
       } else {
         return;
       }
     }
   }, [type, id]);
 
-  return { data };
+  return { artistData, albumData };
 }
