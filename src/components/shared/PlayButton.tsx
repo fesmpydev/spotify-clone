@@ -1,4 +1,5 @@
 import usePlayButton from "../../hooks/usePlayButton";
+import useMiniPlayer from "../../hooks/useMiniPlayer";
 
 export default function PlayButton({
   cover,
@@ -13,6 +14,8 @@ export default function PlayButton({
 }) {
   const { currentAudioSlice, songsList, playSong, pauseSong, resumeSong } =
     usePlayButton();
+
+  const { handleOpenMiniPlayer } = useMiniPlayer();
 
   const currentSong = songsList.find((song) => song.id === songId);
 
@@ -60,7 +63,10 @@ export default function PlayButton({
             src={cover}
             alt={name}
             className="w-[50px] h-[50px] rounded-md relative z-10"
-            onClick={() => playSong({ artistId, songId })}
+            onClick={() => {
+              playSong({ artistId, songId });
+              handleOpenMiniPlayer();
+            }}
           />
         )}
     </div>
