@@ -4,10 +4,10 @@ import { Song } from "../../types";
 
 const initialState: Song = {
   song: [{ id: "", isPlaying: false, isPaused: false, audio: new Audio() }],
-  currentAudioSlice: { id: "" },
+  currentAudioSlice: { id: "", artistId: "" },
 };
 
-export const song = createSlice({
+export const songSlice = createSlice({
   name: "song",
   initialState,
   reducers: {
@@ -35,7 +35,10 @@ export const song = createSlice({
         song.audio.play();
         song.isPlaying = true;
         song.isPaused = false;
-        state.currentAudioSlice = { id: action.payload.songId };
+        state.currentAudioSlice = {
+          id: action.payload.songId,
+          artistId: artist.id,
+        };
         return;
       }
 
@@ -66,7 +69,10 @@ export const song = createSlice({
         previousSong!.isPaused = false;
       }
 
-      state.currentAudioSlice = { id: action.payload.songId };
+      state.currentAudioSlice = {
+        id: action.payload.songId,
+        artistId: artist.id,
+      };
 
       console.warn(state.currentAudioSlice);
 
@@ -95,7 +101,10 @@ export const song = createSlice({
 
       if (!action.payload.songId) return;
 
-      state.currentAudioSlice = { id: action.payload.songId };
+      state.currentAudioSlice = {
+        id: action.payload.songId,
+        artistId: artist.id,
+      };
 
       // si existe la primera cancion en la lista reproducirlo y no agregar
       if (!artist.songs) return;
@@ -148,5 +157,5 @@ export const song = createSlice({
   },
 });
 
-export const { play, pause, resume, playFirstSong } = song.actions;
-export default song.reducer;
+export const { play, pause, resume, playFirstSong } = songSlice.actions;
+export default songSlice.reducer;
