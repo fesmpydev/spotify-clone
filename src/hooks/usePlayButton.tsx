@@ -4,7 +4,7 @@ import { play, pause, resume, playFirstSong } from "../redux/features/song";
 export default function usePlayButton() {
   const dispatch = useAppDispatch();
   const { song: songsList, currentAudioSlice } = useAppSelector(
-    (state) => state.song
+    (state) => state.songSlice
   );
   const playSong = ({
     artistId,
