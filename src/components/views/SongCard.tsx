@@ -1,16 +1,25 @@
 import PlayButton from "../shared/PlayButton";
 
+interface ArtistSongsProps {
+  name: string;
+  cover: string;
+  artistId: string;
+  songId: string;
+}
+
+interface AlbumProps {
+  name: string;
+  cover: string;
+  artistId: string;
+  songId: string;
+}
+
 export default function SongCard({
   name,
   cover,
   artistId,
   songId,
-}: {
-  name: string;
-  cover: string;
-  artistId: string;
-  songId: string;
-}) {
+}: ArtistSongsProps | AlbumProps) {
   return (
     <article className="w-full h-full flex items-center justify-between">
       <div className="flex items-center gap-5">
