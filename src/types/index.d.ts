@@ -16,6 +16,10 @@ export interface PopularArtists {
 
 export interface PopularAlbums extends PopularArtists {
   albumName: string;
+  artistPhoto: string;
+  year: number;
+  songsQty: number;
+  songsTotalTime: Promise<number>;
 }
 
 export interface CoverListProps {
@@ -42,5 +46,35 @@ export interface Song {
     isPaused: boolean;
     audio: HTMLAudioElement;
   }[];
-  currentAudioSlice: { id: string };
+  currentAudioSlice: { id: string; artistId: string };
+}
+
+export interface ExploreCardProps {
+  title: string;
+  photo: string;
+  bgColor: string;
+  genre: string;
+}
+
+export interface LoginContainerWithIconProps {
+  icon: string;
+  text: string;
+}
+
+export interface MethodsLogin {
+  id: number;
+  name: string;
+  icon: string;
+}
+
+export interface UseMiniPlayer {
+  id: string;
+  isPlaying: boolean;
+  isPaused: boolean;
+  audio: HTMLAudioElement;
+}
+
+export interface FullScreenMiniPlayerProps {
+  currentSong: UseMiniPlayer;
+  songDetails: Songs;
 }
