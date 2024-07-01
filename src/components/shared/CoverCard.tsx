@@ -14,7 +14,7 @@ export default function CoverCard({
           <img
             src={photo}
             alt={artistName}
-            className="w-full h-full object-cover"
+            className="max-w-full h-full object-cover aspect-square"
           />
         </Link>
         <figcaption className="text-white font-medium text-3xl mt-5">
