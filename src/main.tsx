@@ -5,8 +5,11 @@ import { Provider } from "react-redux";
 import { store } from "./redux/store";
 import Layout from "./components/views/Layout";
 import Home from "./components/views/Home";
-import "./index.css";
 import CoverCardDetails from "./components/views/CoverCardDetails";
+import Search from "./components/views/Search";
+import Signup from "./components/views/Signup";
+import "./index.css";
+import Login from "./components/views/Login";
 
 const router = createBrowserRouter([
   {
@@ -22,7 +25,24 @@ const router = createBrowserRouter([
         element: <CoverCardDetails />,
         loader: ({ params }) => params,
       },
+      {
+        path: "album/:id",
+        element: <CoverCardDetails />,
+        loader: ({ params }) => params,
+      },
+      {
+        path: "search",
+        element: <Search />,
+      },
     ],
+  },
+  {
+    path: "/login",
+    element: <Login />,
+  },
+  {
+    path: "/signup",
+    element: <Signup />,
   },
 ]);
 
